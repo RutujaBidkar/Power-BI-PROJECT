@@ -1,0 +1,55 @@
+1.Create a measure to calculate the Total Quantity Sold.
+ 
+Total_Quantity_Sold = 
+SUM('Sales Table'[Quantity])
+
+2.Create a measure to calculate the Total Sales Amount.
+
+Total_Sales_Amount =
+ SUMX('Sales Table','Sales Table'[Quantity] * 'Sales Table'[Price])
+
+3.Create a measure to calculate the Total Discount.
+
+Total_Discount =
+SUMX(
+    'Sales Table',
+    'Sales Table'[Quantity] * 'Sales Table'[Discount]
+)
+
+4.Create a measure to calculate the Average Product Price.
+
+Avg_Product_Price =
+AVERAGE('Sales Table'[Price])
+
+5.Create a measure to find the Highest Product Price.
+
+High_Product_Price =
+MAX('Sales Table'[Price])
+
+6.Create a measure to find the Lowest Product Price.
+
+Lowest_Product_Price = 
+MIN('Sales Table'[Price])
+
+7.Create a measure to count the Total Orders.
+
+Count_Total_Orders = 
+COUNTROWS('Sales Table'[OrderID])
+
+8.Create a measure to count the Number of Unique Customers.
+
+Unique_Customer_Records = 
+DISTINCTCOUNT('Sales Table [OrderID])
+
+9.Create a measure to count the Number of Unique Cities.
+
+Unique_Cities = 
+DISTINCTCOUNT('Sales Table'[City])
+
+10.Create a measure to calculate the Average Quantity per Order.
+
+Avg_Quantity_Per_Order =
+DIVIDE(
+    SUM('Sales Table'[Quantity]),
+    DISTINCTCOUNT('Sales Table'[OrderID])
+)
