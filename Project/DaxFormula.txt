@@ -123,3 +123,11 @@ AVERAGE('Sales Table'[Discount])
 Unique_Customers =
 DISTINCTCOUNT('Sales Table'[Customers])
       
+P
+
+
+
+
+
+
+
