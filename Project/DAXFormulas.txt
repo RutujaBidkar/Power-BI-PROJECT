@@ -256,3 +256,83 @@ CALCULATE(
     'Sales Table'[City] = "Pune"
 )
 
+46.Create a measure to calculate the Total Quantity Sold in Pune.
+Total_Quantity  =
+               CALCULATE (
+                           SUM('Sales Table'[Quantity]),
+                                'Sales Table'[City]="Pune"
+)
+
+47.Create a measure to calculate the Average Price of Electronics Products.
+Avg_Price =
+CALCULATE(
+    AVERAGE('Sales Table'[Price]),
+    'Sales Table'[Category] = "Electronics"
+)
+
+48.Create a measure to calculate the Total Discount for Furniture Products.
+Total_Discount =
+CALCULATE(
+          SUM('Sales Table'[Discount]),
+              'Sales Table'[Category]="Furniture"
+)
+
+49.Create a measure to calculate the Number of Orders from Mumbai.
+Num_OrdMumbai =
+CALCULATE(
+          COUNTROWS('Sales Table'),
+          'Sales Table'[City]="Mumbai"
+)
+
+
+50.Create a measure to calculate the Number of Unique Customers in Pune.
+Num_Unique_Customers =
+CALCULATE(
+    DISTINCTCOUNT('Sales Table'[Customer]),
+    'Sales Table'[City] = "Pune"
+)
+
+51.Create a measure to calculate the Gross Sales for Electronics Products.
+Gross_Sales =
+CALCULATE(
+    SUMX(
+        'Sales Table',
+        'Sales Table'[Quantity] * 'Sales Table'[Price]
+    ),
+    'Sales Table'[Category] = "Electronics"
+)
+
+52.Create a measure to calculate the Net Sales for Furniture Products.
+Net_Sales =
+CALCULATE(
+    SUMX(
+        'Sales Table',
+        ('Sales Table'[Quantity] * 'Sales Table'[Price]) -
+        ('Sales Table'[Quantity] * 'Sales Table'[Discount])
+    ),
+    'Sales Table'[Category] = "Furniture"
+)
+
+53.Create a measure to calculate the Average Discount in Pune.
+Avg_DiscountPune =
+CALCULATE (
+            AVERAGE('Sales Table'[Discount]),
+            'Sales Table'[City]="Pune"
+)
+
+54.Create a measure to calculate the Highest Product Price in Electronics.
+High_Price =
+CALCULATE(
+    MAX('Sales Table'[Price]),
+    'Sales Table'[Category] = "Electronics"
+)
+
+55.Create a measure to calculate the Total Sales in Pune.
+Total_Sales =
+CALCULATE(
+    SUMX(
+        'Sales Table',
+        'Sales Table'[Quantity] * 'Sales Table'[Price]
+    ),
+    'Sales Table'[City] = "Pune"
+)
