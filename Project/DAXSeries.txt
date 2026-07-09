@@ -336,3 +336,93 @@ CALCULATE(
     ),
     'Sales Table'[City] = "Pune"
 )
+
+56.Create a measure to calculate the Total Sales Amount.
+Total_Sales =
+SUMX('Sales Table' ,
+      'Sales Table'[Quantity] * 'Sales Table'[Price]
+)
+
+57.Create a measure to calculate the Total Discount Amount.
+Total_Discount =
+SUMX('Sales Table',
+      'Sales Table'[Quantity] * 'Sales Table' [Discount]
+)
+
+58.Create a measure to calculate the Net Sales.
+Net_Sales = 
+SUMX ('Sales Table',
+       'Sales Table'[Quantity] * 'Sales Table'[Price] -
+       'Sales Table'[Quantity] * 'Sales Table'[Discount]
+)
+
+59.Create a measure to calculate the Total Sales for Electronics.
+Total_Sales_Electronics =
+CALCULATE(
+    SUMX(
+        'Sales Table',
+        'Sales Table'[Quantity] * 'Sales Table'[Price]
+    ),
+    'Sales Table'[Category] = "Electronics"
+)
+
+60.Create a measure to calculate the Net Sales for Pune.
+Net_Sales = CALCULATE(
+SUMX ('Sales Table',
+       'Sales Table'[Quantity] * 'Sales Table'[Price] -
+       'Sales Table'[Quantity] * 'Sales Table'[Discount]
+),
+       'Sales Table'[City]="Pune"
+)
+
+61.Create a measure to calculate the Total Discount Amount for Furniture.
+Total_Discount =
+CALCULATE(
+         SUMX('Sales Table',
+               'Sales Table'[Quantity] * 'Sales Table' [Discount]
+),            
+              'Sales Table'[Category]= "Furniture"
+)
+
+62.Create a measure to calculate the Average Sales per Order.
+Average_Sales_Per_Order =
+DIVIDE(
+    SUMX(
+        'Sales Table',
+        'Sales Table'[Quantity] * 'Sales Table'[Price]
+    ),
+    COUNTROWS('Sales Table')
+)
+
+63.Create a measure to calculate the Highest Sales Amount (highest value of Quantity × Price).
+Highest_Sales_Amount =
+MAXX(
+    'Sales Table',
+    'Sales Table'[Quantity] * 'Sales Table'[Price]
+)
+ 
+64.Create a measure to calculate the Total Sales for Customers from Pune.
+Total_Sales_Pune =
+CALCULATE(
+    SUMX(
+        'Sales Table',
+        'Sales Table'[Quantity] * 'Sales Table'[Price]
+    ),
+    'Sales Table'[City] = "Pune"
+)
+
+65.Create a measure to calculate the Sales Contribution % of each Category.
+Sales_Contribution_% =
+DIVIDE(
+    SUMX(
+        'Sales Table',
+        'Sales Table'[Quantity] * 'Sales Table'[Price]
+    ),
+    CALCULATE(
+        SUMX(
+            'Sales Table',
+            'Sales Table'[Quantity] * 'Sales Table'[Price]
+        ),
+        ALL('Sales Table'[Category])
+    )
+)
