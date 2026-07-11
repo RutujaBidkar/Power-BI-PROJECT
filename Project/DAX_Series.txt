@@ -1,0 +1,597 @@
+1.Create a measure to calculate the Total Quantity Sold.
+ 
+Total_Quantity_Sold = 
+SUM('Sales Table'[Quantity])
+
+2.Create a measure to calculate the Total Sales Amount.
+
+Total_Sales_Amount =
+ SUMX('Sales Table','Sales Table'[Quantity] * 'Sales Table'[Price])
+
+3.Create a measure to calculate the Total Discount.
+
+Total_Discount =
+SUMX(
+    'Sales Table',
+    'Sales Table'[Quantity] * 'Sales Table'[Discount]
+)
+
+4.Create a measure to calculate the Average Product Price.
+
+Avg_Product_Price =
+AVERAGE('Sales Table'[Price])
+
+5.Create a measure to find the Highest Product Price.
+
+High_Product_Price =
+MAX('Sales Table'[Price])
+
+6.Create a measure to find the Lowest Product Price.
+
+Lowest_Product_Price = 
+MIN('Sales Table'[Price])
+
+7.Create a measure to count the Total Orders.
+
+Count_Total_Orders = 
+COUNTROWS('Sales Table'[OrderID])
+
+8.Create a measure to count the Number of Unique Customers.
+
+Unique_Customer_Records = 
+DISTINCTCOUNT('Sales Table [OrderID])
+
+9.Create a measure to count the Number of Unique Cities.
+
+Unique_Cities = 
+DISTINCTCOUNT('Sales Table'[City])
+
+10.Create a measure to calculate the Average Quantity per Order.
+
+Avg_Quantity_Per_Order =
+DIVIDE(
+    SUM('Sales Table'[Quantity]),
+    DISTINCTCOUNT('Sales Table'[OrderID])
+)
+
+11.Create a measure to calculate the Total Quantity.
+Total_Quantity =
+SUM('Sales Table'[Quantity])
+
+12.Create a measure to calculate the Total Price.
+Total_Price =
+SUM('Sales Table'[Price])
+
+13.Create a measure to calculate the Total Discount.
+Total_Discount =
+SUMX('Sales Table',
+      'Sales Table'[Quantity] * 'Sales Table'[Discount]
+)
+
+14.Create a measure to find the Average Price.
+Avg_price =
+AVERAGE('Sales Table'[Price])
+
+15.Create a measure to find the Maximum Price.
+Max_Price = 
+MAX('Sales Table'[Price])
+
+16.Create a measure to find the Minimum Price.
+Min_Price =
+MIN('Sales Table'[Price])
+
+17.Create a measure to count the Total Orders.
+Total_Orders =
+COUNTROWS('Sales Table')
+
+Total_Orders =
+COUNT('Sales Table'[Orders])
+
+18.Create a measure to count the Unique Customers.
+Unique_Customer =
+DISTINCTCOUNT('Sales Table'[Customers])
+
+19.Create a measure to count the Unique Products.
+Unique_Customer =
+DISTINCTCOUNT('Sales Table'[Product])
+
+20.Create a measure to count the Unique Cities.
+Unique_Customer =
+DISTINCTCOUNT('Sales Table'[Cities])
+
+21.Create a measure to calculate the Total Sales Amount.
+Total_Sales_Amount = 
+SUMX(Sales Table,'Sales Table'[Quantity]* 'Sales Table'[Price])
+
+22.Create a measure to calculate the Net Sales.
+Net_Sales =
+SUMX(
+    'Sales Table',
+    ('Sales Table'[Quantity] * 'Sales Table'[Price]) -
+    ('Sales Table'[Quantity] * 'Sales Table'[Discount])
+)
+
+23.Create a measure to calculate the Total Quantity Sold.
+Total_Quantity_Sold =
+SUM('Sales Table'[Quantity])
+
+24.Create a measure to calculate the Average Discount.
+Avg_Discount =
+AVERAGE('Sales Table'[Discount])
+
+25.Create a measure to count the Number of Unique Customers.
+Unique_Customers =
+DISTINCTCOUNT('Sales Table'[Customers])
+
+26.Create a measure to calculate the Highest Discount.
+Highest_Discount =
+MAX('Sales Table'[Discount])
+
+27.Create a measure to calculate the Lowest Quantity Sold.
+Lowest_Quantity_Sold = 
+MIN('Sales Table'[Quantity])
+
+28.Create a measure to calculate the Total Number of Products Sold.
+Total_Number =
+SUM('Sales Table'[Quantity])
+
+27.Create a measure to calculate the Total Sales Amount.
+Total_Sales_Amount = 
+SUMX(
+      'Sales Table',
+      'Sales Table'[Quantity]* 'Sales Table'[Price]
+)
+
+28.Create a measure to calculate the Net Sales.
+Net_Sales =
+SUMX(
+     'Sales Table',
+     'Sales Table'[Quantity] * 'Sales Table'[Price] -
+     'Sales Table'[Quantity] * 'Sales Table'[Discount]
+)
+
+29.Create a measure to calculate the Total Quantity Sold in Pune.
+Quantity_SoldInPune = 
+CALCULATE(
+     'Sales Table',
+     'Sales Table'[Quantity],
+     'Sales Table'[City]="Pune"
+)
+
+30.Create a measure to calculate the Average Quantity Sold per Order.
+Avg_SoldPerOrder =
+DIVIDE(
+    SUM('Sales Table'[Quantity]),
+    COUNTROWS('Sales Table')
+)
+
+31. Create a measure to calculate the Total Sales for the Electronics category.
+Total_Sales =
+CALCULATE(
+    SUMX(
+        'Sales Table',
+        'Sales Table'[Quantity] * 'Sales Table'[Price]
+    ),
+    'Sales Table'[Category] = "Electronics"
+)
+
+32.Create a measure to calculate the Number of Orders from Pune.
+Calculate_OrdersInPune =
+Calculate(
+        COUNTROWS('Sales Table'),
+        'Sales Table'[City]="Pune"
+)
+
+33.Create a measure to calculate the Total Discount for Furniture products.
+Cal_Furniture =
+CALCULATE ( SUMX('Sales Table'[Discount),
+            'Sale Table'[Products]="Furniture"
+)
+
+34.Create a measure to calculate the Number of Unique Products.
+Unique_Products =
+DISTINCTCOUNT('Sales Table'[Product])
+
+35.Create a measure to calculate the Total Number of Customers.
+Total_Customers =
+COUNTROWS('Sales Table'[CustomerID])
+
+Total_Customers =
+DISTINCTCOUNT('Sales Table'[CustomerID])
+
+36.Create a measure to calculate the Total Price.
+Total_price =
+SUM('Sales Table'[Price])
+
+37.Create a measure to calculate the Average Quantity Sold.
+Avg_quantiySold =
+AVERAGE('Sales Table'[Quantity])
+
+38.Create a measure to calculate the Number of Unique Cities.
+Unique_cities = 
+DISTINCTCOUNT('Sales Table'[City])
+
+39.Create a measure to calculate the Total Discount Amount.
+Total_DisAmount =
+SUMX('Sales Table',
+     'Sales Table'[Discount] * 'Sales Table[Quantity])
+
+40.Create a measure to calculate the Gross Sales.
+Total_GrossSales =
+SUMX('Sales Table',
+      'Sales Table'[Price]* 'Sales Table'[Quantity])
+
+41.Create a measure to calculate the Net Sales.
+Net_Sales= 
+SUMX('Sales Table',
+      'Sales Table'[Quantity] * 'Sales Table'[Price] -
+      'Sales Table'[Quantity] * 'Sales Table'[Discount]
+)
+
+42.Create a measure to calculate the Total Quantity Sold in Mumbai.
+Total_Quantity =
+CALCULATE(
+    SUM('Sales Table'[Quantity]),
+    'Sales Table'[City] = "Mumbai"
+)
+
+43.Create a measure to calculate the Average Price of Furniture Products.
+Avg_Price =
+CALCULATE(
+    AVERAGE('Sales Table'[Price]),
+    'Sales Table'[Category] = "Furniture"
+)
+
+44.Create a measure to calculate the Number of Orders in the Electronics Category.
+Electronic_Category =
+CALCULATE(
+    COUNTROWS('Sales Table'),
+    'Sales Table'[Category] = "Electronics"
+)
+
+45.Create a measure to calculate the Total Discount for Pune City.
+Total_Discount =
+CALCULATE(
+    SUM('Sales Table'[Discount]),
+    'Sales Table'[City] = "Pune"
+)
+
+46.Create a measure to calculate the Total Quantity Sold in Pune.
+Total_Quantity  =
+               CALCULATE (
+                           SUM('Sales Table'[Quantity]),
+                                'Sales Table'[City]="Pune"
+)
+
+47.Create a measure to calculate the Average Price of Electronics Products.
+Avg_Price =
+CALCULATE(
+    AVERAGE('Sales Table'[Price]),
+    'Sales Table'[Category] = "Electronics"
+)
+
+48.Create a measure to calculate the Total Discount for Furniture Products.
+Total_Discount =
+CALCULATE(
+          SUM('Sales Table'[Discount]),
+              'Sales Table'[Category]="Furniture"
+)
+
+49.Create a measure to calculate the Number of Orders from Mumbai.
+Num_OrdMumbai =
+CALCULATE(
+          COUNTROWS('Sales Table'),
+          'Sales Table'[City]="Mumbai"
+)
+
+
+50.Create a measure to calculate the Number of Unique Customers in Pune.
+Num_Unique_Customers =
+CALCULATE(
+    DISTINCTCOUNT('Sales Table'[Customer]),
+    'Sales Table'[City] = "Pune"
+)
+
+51.Create a measure to calculate the Gross Sales for Electronics Products.
+Gross_Sales =
+CALCULATE(
+    SUMX(
+        'Sales Table',
+        'Sales Table'[Quantity] * 'Sales Table'[Price]
+    ),
+    'Sales Table'[Category] = "Electronics"
+)
+
+52.Create a measure to calculate the Net Sales for Furniture Products.
+Net_Sales =
+CALCULATE(
+    SUMX(
+        'Sales Table',
+        ('Sales Table'[Quantity] * 'Sales Table'[Price]) -
+        ('Sales Table'[Quantity] * 'Sales Table'[Discount])
+    ),
+    'Sales Table'[Category] = "Furniture"
+)
+
+53.Create a measure to calculate the Average Discount in Pune.
+Avg_DiscountPune =
+CALCULATE (
+            AVERAGE('Sales Table'[Discount]),
+            'Sales Table'[City]="Pune"
+)
+
+54.Create a measure to calculate the Highest Product Price in Electronics.
+High_Price =
+CALCULATE(
+    MAX('Sales Table'[Price]),
+    'Sales Table'[Category] = "Electronics"
+)
+
+55.Create a measure to calculate the Total Sales in Pune.
+Total_Sales =
+CALCULATE(
+    SUMX(
+        'Sales Table',
+        'Sales Table'[Quantity] * 'Sales Table'[Price]
+    ),
+    'Sales Table'[City] = "Pune"
+)
+
+56.Create a measure to calculate the Total Sales Amount.
+Total_Sales =
+SUMX('Sales Table' ,
+      'Sales Table'[Quantity] * 'Sales Table'[Price]
+)
+
+57.Create a measure to calculate the Total Discount Amount.
+Total_Discount =
+SUMX('Sales Table',
+      'Sales Table'[Quantity] * 'Sales Table' [Discount]
+)
+
+58.Create a measure to calculate the Net Sales.
+Net_Sales = 
+SUMX ('Sales Table',
+       'Sales Table'[Quantity] * 'Sales Table'[Price] -
+       'Sales Table'[Quantity] * 'Sales Table'[Discount]
+)
+
+59.Create a measure to calculate the Total Sales for Electronics.
+Total_Sales_Electronics =
+CALCULATE(
+    SUMX(
+        'Sales Table',
+        'Sales Table'[Quantity] * 'Sales Table'[Price]
+    ),
+    'Sales Table'[Category] = "Electronics"
+)
+
+60.Create a measure to calculate the Net Sales for Pune.
+Net_Sales = CALCULATE(
+SUMX ('Sales Table',
+       'Sales Table'[Quantity] * 'Sales Table'[Price] -
+       'Sales Table'[Quantity] * 'Sales Table'[Discount]
+),
+       'Sales Table'[City]="Pune"
+)
+
+61.Create a measure to calculate the Total Discount Amount for Furniture.
+Total_Discount =
+CALCULATE(
+         SUMX('Sales Table',
+               'Sales Table'[Quantity] * 'Sales Table' [Discount]
+),            
+              'Sales Table'[Category]= "Furniture"
+)
+
+62.Create a measure to calculate the Average Sales per Order.
+Average_Sales_Per_Order =
+DIVIDE(
+    SUMX(
+        'Sales Table',
+        'Sales Table'[Quantity] * 'Sales Table'[Price]
+    ),
+    COUNTROWS('Sales Table')
+)
+
+63.Create a measure to calculate the Highest Sales Amount (highest value of Quantity × Price).
+Highest_Sales_Amount =
+MAXX(
+    'Sales Table',
+    'Sales Table'[Quantity] * 'Sales Table'[Price]
+)
+ 
+64.Create a measure to calculate the Total Sales for Customers from Pune.
+Total_Sales_Pune =
+CALCULATE(
+    SUMX(
+        'Sales Table',
+        'Sales Table'[Quantity] * 'Sales Table'[Price]
+    ),
+    'Sales Table'[City] = "Pune"
+)
+
+65.Create a measure to calculate the Sales Contribution % of each Category.
+Sales_Contribution_% =
+DIVIDE(
+    SUMX(
+        'Sales Table',
+        'Sales Table'[Quantity] * 'Sales Table'[Price]
+    ),
+    CALCULATE(
+        SUMX(
+            'Sales Table',
+            'Sales Table'[Quantity] * 'Sales Table'[Price]
+        ),
+        ALL('Sales Table'[Category])
+    )
+)
+
+66.Create a measure to calculate the Total Sales where Quantity is greater than 2.
+Total_Sales =
+CALCULATE(
+    SUMX(
+        'Sales Table',
+        'Sales Table'[Quantity] * 'Sales Table'[Price]
+    ),
+    FILTER(
+        'Sales Table',
+        'Sales Table'[Quantity] > 2
+    )
+)
+
+67.Create a measure to calculate Total Sales
+Total_Sales =
+CALCULATE(
+    SUMX(
+        'Sales Table',
+        'Sales Table'[Quantity] * 'Sales Table'[Price]
+    ),
+    FILTER(
+        'Sales Table',
+        'Sales Table'[Category] = "Electronics" &&
+        'Sales Table'[Quantity] > 2
+    )
+)
+
+68.Create a measure to count the number of unique cities using VALUES().
+Unique_Products =
+COUNTROWS(
+    VALUES('Sales Table'[Product])
+)
+
+69.Create a measure that returns the selected Category from a slicer.
+Selected_Category =
+SELECTEDVALUE(
+    'Sales Table'[Category],
+    "No Category Selected"
+)
+
+70.Create a measure to calculate Sales % based on the currently selected filters.
+Sales_Percentage =
+DIVIDE(
+    SUMX(
+        'Sales Table',
+        'Sales Table'[Quantity] * 'Sales Table'[Price]
+    ),
+    CALCULATE(
+        SUMX(
+            'Sales Table',
+            'Sales Table'[Quantity] * 'Sales Table'[Price]
+        ),
+        ALLSELECTED('Sales Table')
+    )
+)
+
+71.Create a measure to calculate Total Sales ignoring the City filter.
+Total_Sales_All_Cities =
+CALCULATE(
+    SUMX(
+        'Sales Table',
+        'Sales Table'[Quantity] * 'Sales Table'[Price]
+    ),
+    REMOVEFILTERS('Sales Table'[City])
+)
+
+72.Create a measure to calculate Electronics Sales, while keeping any existing report filters.
+Electronics_Sales =
+CALCULATE(
+    SUMX(
+        'Sales Table',
+        'Sales Table'[Quantity] * 'Sales Table'[Price]
+    ),
+    KEEPFILTERS(
+        'Sales Table'[Category] = "Electronics"
+    )
+)
+
+73.Create a measure to rank Categories by Total Sales.
+Category_Rank =
+RANKX(
+    ALL('Sales Table'[Category]),
+    [Total_Sales],
+    ,
+    DESC,
+    DENSE
+)
+
+74.Return the Top 3 Products by Sales.
+Top_3_Products =
+TOPN(
+    3,
+    SUMMARIZE(
+        'Sales Table',
+        'Sales Table'[Product],
+        "Total Sales",
+        SUMX(
+            'Sales Table',
+            'Sales Table'[Quantity] * 'Sales Table'[Price]
+        )
+    ),
+    [Total Sales],
+    DESC
+)
+
+75.Create a measure for:Net Sales % = Net Sales / Total Sales
+Net_Sales_% =
+DIVIDE(
+    SUMX(
+        'Sales Table',
+        ('Sales Table'[Quantity] * 'Sales Table'[Price]) -
+        ('Sales Table'[Quantity] * 'Sales Table'[Discount])
+    ),
+    SUMX(
+        'Sales Table',
+        'Sales Table'[Quantity] * 'Sales Table'[Price]
+    )
+)
+
+76.Create a measure to calculate the Total Quantity Sold.
+Total_Quantity =
+SUM('Sales Table'[Quantity]);
+
+77.Create a measure to calculate the Total Price
+Total_Price =
+SUM('Sales Table'[Price]);
+
+78.Create a measure to calculate the Average Price.
+Avg_price = 
+AVERAGE ('Sales Table'[Price])
+
+79.Create a measure to calculate the Highest Discount.
+Highest_Discount =
+MAX('Sales Table'[Discount])
+
+80.Create a measure to calculate the Lowest Quantity.
+Lowest_Quantity =
+MIN('Sales Table'[Quantity])
+
+81.Create a measure to count the Total Orders.
+Total_Orders=
+Count('Sales Table'[Orders])
+
+82.Create a measure to count the Unique Customers.
+Unique_Customers =
+DISTINCTCOUNT('Sales Table'[Customers])
+
+83.Create a measure to calculate Total Sales.
+Total_Sales =
+SUMX('Sales Table','Sales Table'[Quantity] * 'Sales Table'[Price]);
+
+84.Create a measure to calculate Net Sales.
+Net_Sales =
+SUMX(
+    'Sales Table',
+    ('Sales Table'[Quantity] * 'Sales Table'[Price]) -
+    ('Sales Table'[Quantity] * 'Sales Table'[Discount])
+)
+
+85.Create a measure to calculate Total Sales for Pune.
+Total_Sales_Pune =
+CALCULATE(
+    SUMX(
+        'Sales Table',
+        'Sales Table'[Quantity] * 'Sales Table'[Price]
+    ),
+    'Sales Table'[City] = "Pune"
+)
