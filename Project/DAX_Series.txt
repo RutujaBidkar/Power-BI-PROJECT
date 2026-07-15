@@ -701,3 +701,123 @@ DIVIDE(
     [Current_Sales] - [Previous_Sales],
     [Previous_Sales]
 )
+
+101. Create a measure to calculate Total Sales only for orders where Quantity is greater than 5.
+Total_Sales =
+CALCULATE(
+    SUMX(
+        'Sales Table',
+        'Sales Table'[Quantity] * 'Sales Table'[Price]
+    ),
+    'Sales Table'[Quantity] > 5
+
+102. Create a measure to calculate Total Sales for the current filter context.
+Total_Sales =
+SUMX(
+    'Sales Table',
+    'Sales Table'[Quantity] * 'Sales Table'[Price]
+)
+
+103.Create a measure to calculate Total Sales while ignoring the City filter.
+Total_Sales_Ignore_City =
+CALCULATE(
+    SUMX(
+        'Sales Table',
+        'Sales Table'[Quantity] * 'Sales Table'[Price]
+    ),
+    ALL('Sales Table'[City])
+)
+
+104. Create a measure to calculate the percentage contribution of each Category to Total Sales.
+Sales_Contribution_% =
+DIVIDE(
+    SUMX(
+        'Sales Table',
+        'Sales Table'[Quantity] * 'Sales Table'[Price]
+    ),
+    CALCULATE(
+        SUMX(
+            'Sales Table',
+            'Sales Table'[Quantity] * 'Sales Table'[Price]
+        ),
+        ALL('Sales Table'[Category])
+    )
+)
+
+105.Create a measure to return the selected Category from a slicer.
+Selected_Category =
+SELECTEDVALUE('Sales Table'[Category])
+
+106.Create a measure to calculate the Total Sales for the Top 5 Products.
+Top5_Product_Sales =
+CALCULATE(
+    SUMX(
+        'Sales Table',
+        'Sales Table'[Quantity] * 'Sales Table'[Price]
+    ),
+    TOPN(
+        5,
+        ALL('Sales Table'[Product]),
+        SUMX(
+            'Sales Table',
+            'Sales Table'[Quantity] * 'Sales Table'[Price]
+        ),
+        DESC
+    )
+)
+
+107.Create a measure to rank Products based on Total Sales.
+Total_Sales =
+SUMX(
+    'Sales Table',
+    'Sales Table'[Quantity] * 'Sales Table'[Price]
+)
+Product_Rank =
+RANKX(
+    ALL('Sales Table'[Product]),
+    [Total_Sales],
+    ,
+    DESC
+)
+
+108.Create a measure to calculate Running Total Sales.
+Running_Total_Sales =
+CALCULATE(
+    [Total_Sales],
+    FILTER(
+        ALL('Date'[Date]),
+        'Date'[Date] <= MAX('Date'[Date])
+    )
+)
+
+109.Create a measure to calculate Previous Month Sales.
+Total_Sales =
+SUMX(
+    'Sales Table',
+    'Sales Table'[Quantity] * 'Sales Table'[Price]
+)
+Previous_Month_Sales =
+CALCULATE(
+    [Total_Sales],
+    DATEADD(
+        'Date'[Date],
+        -1,
+        MONTH
+    )
+)
+
+110.Create a measure to calculate Month-over-Month (MoM) Sales Growth %.
+Total_Sales =
+SUMX(
+    'Sales Table',
+    'Sales Table'[Quantity] * 'Sales Table'[Price]
+)
+Previous_Month_Sales =
+CALCULATE(
+    [Total_Sales],
+    DATEADD(
+        'Date'[Date],
+        -1,
+        MONTH
+    )
+)
