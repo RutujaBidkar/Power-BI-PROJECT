@@ -821,3 +821,119 @@ CALCULATE(
         MONTH
     )
 )
+
+111.Calculate the percentage contribution of each Product to the Total Sales.
+Total_Sales =
+SUMX(
+     'Sales Table',
+     'Sales Table [Quantity] * 'Sales Table'[Price]
+)
+Product Sales % =
+DIVIDE(
+    [Total Sales],
+    CALCULATE(
+        [Total Sales],
+        ALL('Sales Table'[Product])
+    )
+)
+
+
+112.Create a measure to return the selected Category from a slicer.
+Selected_Category =
+SELECTEDVALUE('Sales Table'[Category], "All Categories")
+
+113.Calculate the Total Sales for the Top 5 Products.
+Top 5 Product Sales =
+CALCULATE(
+    [Total Sales],
+    TOPN(
+        5,
+        ALL('Sales Table'[Product]),
+        [Total Sales],
+        DESC
+    )
+)
+
+114.Create a measure to rank Products based on Total Sales.
+Product Rank =
+RANKX(
+    ALL('Sales Table'[Product]),
+    [Total Sales],
+    ,
+    DESC,
+    DENSE
+)
+
+115.Create a DAX measure to calculate the sales amount from the previous month.
+Previous Month Measure =
+CALCULATE(
+    [Measure],
+    PREVIOUSMONTH('Date'[Date])
+)
+
+116.Calculate Month-over-Month (MoM) Sales Growth %.
+MoM Sales Growth % =
+DIVIDE(
+    [Total Sales] - [Previous Month Sales],
+    [Previous Month Sales]
+)
+
+117.Calculate Year-over-Year (YoY) Sales Growth %
+Total Sales =
+SUMX(
+    'Sales Table',
+    'Sales Table'[Quantity] * 'Sales Table'[Price]
+)
+Previous Year Sales =
+CALCULATE(
+    [Total Sales],
+    SAMEPERIODLASTYEAR('Date'[Date])
+)
+Previous Year Sales =
+CALCULATE(
+    [Total Sales],
+    SAMEPERIODLASTYEAR('Date'[Date])
+)
+YoY Sales Growth % =
+DIVIDE(
+    [Total Sales] - [Previous Year Sales],
+    [Previous Year Sales]
+)
+118.Calculate the percentage of Total Sales contributed by each Category.
+-- 1. Calculate Total Sales
+Total Sales =
+SUMX(
+    'Sales Table',
+    'Sales Table'[Quantity] * 'Sales Table'[Price]
+)
+-- 2. Calculate Category's % Contribution to Total Sales
+Category Sales % =
+DIVIDE(
+    [Total Sales],
+    CALCULATE(
+        [Total Sales],
+        ALL('Sales Table'[Category])
+    )
+)
+ 119.Create a DAX measure to calculate the average sales amount per customer.
+Average Sales per Customer =
+AVERAGEX(
+    VALUES('Sales Table'[CustomerID]),
+    [Total Sales]
+)
+Total Sales =
+SUMX(
+    'Sales Table',
+    'Sales Table'[Quantity] * 'Sales Table'[Price]
+)
+Average Sales per Customer =
+AVERAGEX(
+    VALUES('Sales Table'[CustomerID]),
+    [Total Sales]
+)
+
+120.Create a DAX measure to calculate the number of unique customers in the Sales table.
+Unique Customers =
+DISTINCTCOUNT(
+    'Sales Table'[CustomerID]
+)
